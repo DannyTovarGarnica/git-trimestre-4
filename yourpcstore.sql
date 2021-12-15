@@ -191,10 +191,6 @@ INSERT INTO Promociones(id_promociones,fecha_ini,fecha_fin,precio,id_producto) V
 
 -- ejecutar colsultas
 
-SELECT pro.id_producto, pro.precio, pro.id_distribuidor, ven.fecha_venta, ven.id_venta, ven.valor_venta, ven.id_usuario
- FROM producto pro, venta ven
- WHERE pro.id_producto = ven.id_producto;
- 
 SELECT usu.id_usuario, usu.nombres, usu.apellidos, usu.telefono, ro.rol
  FROM usuario usu, rol ro
  WHERE usu.fk_id_rol = ro.id_rol;
@@ -218,4 +214,9 @@ SELECT pro.id_producto, pro.precio, prom.fecha_ini, prom.fecha_fin, prom.precio
  FROM usuario usu
  JOIN consultas con
  ON (usu.id_usuario = con.id_usuario);
+ 
+ SELECT usu.nombres, usu.apellidos, usu.telefono, vent.fecha_venta, valor_venta
+ FROM usuario usu
+ JOIN venta vent
+ ON (usu.id_usuario = vent.id_usuario);
  
